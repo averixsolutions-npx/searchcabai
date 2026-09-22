@@ -38,7 +38,7 @@
 </div>
 
 <!-- Nav -->
-<header class="sticky top-0 z-40 bg-[var(--paper)]/95 backdrop-blur border-b border-[var(--sand)]">
+<header class="sticky top-0 z-40 backdrop-blur border-b border-[var(--sand)]" style="background-color: rgba(247,244,236,0.97);">
   <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
     <a href="#home" class="display text-xl font-semibold tracking-tight"><img src="logo.jpg" class="h-12" alt="SearchCab AI"></a>
     <nav class="hidden md:flex gap-8 text-sm font-medium">
@@ -132,7 +132,7 @@
     </a>
     <a href="#booking" class="card-route group block" data-dest="Forts">
       <div class="relative h-56">
-        <img src="https://images.unsplash.com/photo-1599839575945-a9e5af0c3fa5?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+        <img src="https://images.unsplash.com/photo-1524230507669-5ff97982bb5e?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
         <span class="absolute top-3 left-3 bg-white/90 text-[10px] font-semibold px-2 py-1 rounded">Culture</span>
         <div class="absolute bottom-4 left-4 text-white">
@@ -243,7 +243,7 @@
             <option value="17">Maruti Ertiga (₹17/km)</option>
             <option value="14" selected>Hyundai Aura (₹14/km)</option>
             <option value="14">Swift Dzire (₹14/km)</option>
-            <option value="14">Toyota Glanza (₹14/km)</option>
+            <option value="22">Mahindra XUV700 (₹22/km)</option>
           </select>
         </div>
       </div>
@@ -320,12 +320,12 @@
 
 <script>
   const fleet = [
-    {name:"Innova Crysta", cat:"SUV & MUV", rate:24, seats:"6+1", img:"https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=500&q=80"},
-    {name:"Maruti Ertiga", cat:"MUV", rate:17, seats:"6+1", img:"https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=500&q=80"},
-    {name:"Hyundai Aura", cat:"Sedan", rate:14, seats:"4+1", img:"https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=500&q=80"},
-    {name:"Swift Dzire", cat:"Sedan", rate:14, seats:"4+1", img:"https://images.unsplash.com/photo-1494905998402-395d579af36f?auto=format&fit=crop&w=500&q=80"},
-    {name:"Toyota Glanza", cat:"Hatchback", rate:14, seats:"4+1", img:"https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=500&q=80"},
-    {name:"Tempo Traveller", cat:"Tempo Traveller", rate:32, seats:"12+1", img:"https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=500&q=80"},
+    {name:"Innova Crysta", cat:"SUV & MUV", rate:24, seats:"6+1", img:"vehicles/innova_crysta.png"},
+    {name:"Maruti Ertiga", cat:"MUV", rate:17, seats:"6+1", img:"vehicles/ertica.png"},
+    {name:"Hyundai Aura", cat:"Sedan", rate:14, seats:"4+1", img:"vehicles/aura.png"},
+    {name:"Swift Dzire", cat:"Sedan", rate:14, seats:"4+1", img:"vehicles/dzire.png"},
+    {name:"Mahindra XUV700", cat:"SUV & MUV", rate:22, seats:"6+1", img:"vehicles/xuv700.png"},
+    {name:"Tempo Traveller", cat:"Tempo Traveller", rate:32, seats:"12+1", img:"vehicles/tempo_traveller.png"},
   ];
   const grid = document.getElementById('fleet-grid');
   fleet.forEach(c=>{
