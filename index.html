@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SearchCab AI - Premium Tourist Taxi Service &amp; Cab Rental</title>
-<meta name="description" content="Book tourist cabs, outstation taxis, local rides, and airport transfers with SearchCab AI. Best rates guaranteed starting @ ₹14/km.">
+<meta name="description" content="Book tourist cabs, outstation taxis, local rides, and airport transfers with SearchCab AI. Best rates guaranteed starting @ ₹12/km.">
 <meta name="facebook-domain-verification" content="le8na94a8eu9fmans1e05zc3ii4dh5" />
 <link rel="icon" type="image/jpeg" href="logo.jpg">
 <script src="https://cdn.tailwindcss.com"></script>
@@ -94,6 +94,19 @@
   <p class="text-[#6B7268] mb-10 max-w-lg">All vehicles are Tourist (Yellow Plate) permitted for outstation travel.</p>
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="fleet-grid">
     <!-- cards injected -->
+  </div>
+
+  <div class="mt-12 overflow-x-auto">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-[var(--ink)] text-left">
+          <th class="py-3 pr-4 font-semibold">Vehicle</th>
+          <th class="py-3 pr-4 font-semibold">Market Rate</th>
+          <th class="py-3 pr-4 font-semibold text-[var(--moss)]">SearchCab AI Rate</th>
+        </tr>
+      </thead>
+      <tbody id="rate-table-body"></tbody>
+    </table>
   </div>
 </section>
 
@@ -255,6 +268,7 @@
       </div>
       <div><label class="text-xs font-semibold block mb-1">Estimated distance (km)</label><input id="f-km" type="number" min="300" value="300"></div>
       <div><label class="text-xs font-semibold block mb-1">Special requirements / landmark</label><textarea id="f-notes" rows="2" placeholder="Optional"></textarea></div>
+      <p class="text-xs text-[#6B7268]">Toll, parking, permit, and driver allowance (if applicable) will be communicated separately in your final quotation.</p>
       <button type="submit" class="btn-clay font-semibold px-6 py-3 rounded w-full sm:w-auto">Get fare &amp; book via WhatsApp</button>
     </form>
     <div class="md:col-span-2 bg-[var(--moss-dark)] text-white p-6 rounded">
@@ -329,15 +343,25 @@
   });
 
   const fleet = [
-    {name:"Innova Crysta", cat:"SUV & MUV", rate:24, seats:"6+1", img:"vehicles/innova_crysta.png"},
-    {name:"Maruti Ertiga", cat:"MUV", rate:17, seats:"6+1", img:"vehicles/ertica.png"},
-    {name:"Hyundai Aura", cat:"Sedan", rate:14, seats:"4+1", img:"vehicles/aura.png"},
-    {name:"Swift Dzire", cat:"Sedan", rate:14, seats:"4+1", img:"vehicles/dzire.png"},
-    {name:"Mahindra XUV700", cat:"SUV & MUV", rate:22, seats:"6+1", img:"vehicles/xuv700.png"},
-    {name:"Tempo Traveller", cat:"Tempo Traveller", rate:32, seats:"12+1", img:"vehicles/tempo_traveller.png"},
+    {name:"Swift Dzire", cat:"Sedan", market:14, rate:13, seats:"4+1", img:"vehicles/dzire.png"},
+    {name:"Hyundai Aura", cat:"Sedan", market:14, rate:13, seats:"4+1", img:"vehicles/aura.png"},
+    {name:"WagonR", cat:"Hatchback", market:12, rate:12, seats:"4+1", img:"vehicles/wagonR.png"},
+    {name:"Ertiga", cat:"MUV", market:18, rate:17, seats:"6+1", img:"vehicles/ertica.png"},
+    {name:"Innova Crysta", cat:"SUV & MUV", market:24, rate:23, seats:"6+1", img:"vehicles/innova_crysta.png"},
+    {name:"Innova Hycross", cat:"SUV & MUV", market:null, rate:28, seats:"6+1", img:"vehicles/innova_hycross.png"},
+    {name:"Scorpio", cat:"SUV", market:24, rate:23, seats:"6+1", img:"vehicles/scorpio.png"},
+    {name:"Bolero", cat:"SUV", market:24, rate:23, seats:"6+1", img:"vehicles/bolero.png"},
+    {name:"7-Seater SUV", cat:"SUV", market:28, rate:27, seats:"6+1", img:"vehicles/xuv700.png"},
+    {name:"Force Urbania", cat:"Tempo Traveller", market:32, rate:31, seats:"12+1", img:"vehicles/force_urbania.png"},
+    {name:"40-Seater Non-AC Bus", cat:"Bus", market:25, rate:24, seats:"40", img:"vehicles/bus.png"},
+    {name:"Luxury Bus", cat:"Bus", market:65, rate:64, seats:"40+", img:"vehicles/mini_bus.png"},
+    {name:"Tourist Thar", cat:"SUV", market:34, rate:33, seats:"4+1", img:"vehicles/thar.png"},
   ];
   const grid = document.getElementById('fleet-grid');
   fleet.forEach(c=>{
+    const marketHtml = c.market
+      ? `<span class="text-xs text-[#9AA39A] line-through mr-2">₹${c.market}/km</span>`
+      : '';
     grid.innerHTML += `
       <div class="bg-white rounded border border-[var(--sand)] overflow-hidden group">
         <div class="h-40 overflow-hidden bg-white flex items-center justify-center p-2"><img src="${c.img}" class="w-full h-full object-contain"></div>
@@ -346,7 +370,7 @@
           <h3 class="display text-lg font-semibold mb-1">${c.name}</h3>
           <p class="text-xs text-[#6B7268] mb-3">${c.seats} seater · AC</p>
           <div class="flex items-center justify-between">
-            <span class="display text-lg font-semibold">₹${c.rate}<span class="text-xs font-normal text-[#6B7268]">/km</span></span>
+            <span class="display text-lg font-semibold">${marketHtml}₹${c.rate}<span class="text-xs font-normal text-[#6B7268]">/km</span></span>
             <a href="#booking" class="text-sm font-semibold text-[var(--moss)]">Select →</a>
           </div>
         </div>
@@ -360,6 +384,16 @@
     opt.textContent = `${c.name} (₹${c.rate}/km)`;
     if (i === 0) opt.selected = true;
     cabSelect.appendChild(opt);
+  });
+
+  const rateBody = document.getElementById('rate-table-body');
+  fleet.forEach(c => {
+    rateBody.innerHTML += `
+      <tr class="border-b border-[var(--sand)]">
+        <td class="py-3 pr-4 font-medium">${c.name}</td>
+        <td class="py-3 pr-4 text-[#9AA39A] ${c.market ? 'line-through' : ''}">${c.market ? '₹'+c.market+'/km' : '—'}</td>
+        <td class="py-3 pr-4 font-semibold text-[var(--moss)]">₹${c.rate}/km</td>
+      </tr>`;
   });
 
   document.querySelectorAll('[data-dest]').forEach(el=>{
