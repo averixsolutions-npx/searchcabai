@@ -331,7 +331,7 @@
   fleet.forEach(c=>{
     grid.innerHTML += `
       <div class="bg-white rounded border border-[var(--sand)] overflow-hidden group">
-        <div class="h-40 overflow-hidden"><img src="${c.img}" class="w-full h-full object-cover"></div>
+        <div class="h-40 overflow-hidden bg-white flex items-center justify-center p-2"><img src="${c.img}" class="w-full h-full object-contain"></div>
         <div class="p-5">
           <p class="text-[10px] uppercase tracking-wide text-[var(--moss)] font-semibold mb-1">${c.cat}</p>
           <h3 class="display text-lg font-semibold mb-1">${c.name}</h3>
