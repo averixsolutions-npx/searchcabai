@@ -238,13 +238,7 @@
         </div>
         <div>
           <label class="text-xs font-semibold block mb-1">Cab category</label>
-          <select id="f-cab">
-            <option value="24">Innova Crysta (₹24/km)</option>
-            <option value="17">Maruti Ertiga (₹17/km)</option>
-            <option value="14" selected>Hyundai Aura (₹14/km)</option>
-            <option value="14">Swift Dzire (₹14/km)</option>
-            <option value="22">Mahindra XUV700 (₹22/km)</option>
-          </select>
+          <select id="f-cab"></select>
         </div>
       </div>
       <div class="grid sm:grid-cols-2 gap-4">
@@ -342,6 +336,15 @@
           </div>
         </div>
       </div>`;
+  });
+
+  const cabSelect = document.getElementById('f-cab');
+  fleet.forEach((c, i) => {
+    const opt = document.createElement('option');
+    opt.value = c.rate;
+    opt.textContent = `${c.name} (₹${c.rate}/km)`;
+    if (i === 0) opt.selected = true;
+    cabSelect.appendChild(opt);
   });
 
   document.querySelectorAll('[data-dest]').forEach(el=>{
