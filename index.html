@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SearchCab AI - Premium Tourist Taxi Service &amp; Cab Rental</title>
+<meta name="description" content="Book tourist cabs, outstation taxis, local rides, and airport transfers with SearchCab AI. Best rates guaranteed starting @ ₹14/km.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B2A20; --paper:#F7F4EC; --moss:#2F5233; --moss-dark:#1E3A22;
+    --clay:#C46A3A; --sand:#E7DFC9; --wa:#25D366;
+  }
+  body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);}
+  h1,h2,h3,.display{font-family:'Fraunces',serif;}
+  .btn-primary{background:var(--moss);color:#fff;transition:background .2s ease;}
+  .btn-primary:hover{background:var(--moss-dark);}
+  .btn-clay{background:var(--clay);color:#fff;}
+  .card-route{position:relative;overflow:hidden;border-radius:4px;}
+  .card-route img{transition:transform .5s ease;}
+  .card-route:hover img{transform:scale(1.06);}
+  .divider{height:1px;background:linear-gradient(to right, transparent, var(--sand), transparent);}
+  ::selection{background:var(--moss);color:#fff;}
+  .wa-float{position:fixed;bottom:20px;right:20px;z-index:50;box-shadow:0 6px 20px rgba(0,0,0,.2);}
+  input,select,textarea{background:#fff;border:1px solid #D8D0BA;border-radius:4px;padding:.6rem .75rem;width:100%;}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--moss);border-color:var(--moss);}
+  .modal-backdrop{background:rgba(20,25,15,.55);}
+</style>
+</head>
+<body class="antialiased">
+
+<!-- Top strip -->
+<div class="bg-[var(--moss-dark)] text-[var(--sand)] text-xs py-2 px-4 text-center">
+  Safe journey, happy journey, memorable journey — 24/7 support:
+  <a href="tel:+919112080025" class="font-semibold underline decoration-[var(--clay)]">+91 91120 80025</a>
+</div>
+
+<!-- Nav -->
+<header class="sticky top-0 z-40 bg-[var(--paper)]/95 backdrop-blur border-b border-[var(--sand)]">
+  <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+    <a href="#home" class="display text-xl font-semibold tracking-tight">SearchCab <span class="text-[var(--clay)]">AI</span></a>
+    <nav class="hidden md:flex gap-8 text-sm font-medium">
+      <a href="#fleet" class="hover:text-[var(--moss)]">Fleet &amp; Rates</a>
+      <a href="#destinations" class="hover:text-[var(--moss)]">Destinations</a>
+      <a href="#how-it-works" class="hover:text-[var(--moss)]">How it works</a>
+      <a href="#contact" class="hover:text-[var(--moss)]">Contact</a>
+    </nav>
+    <a href="#booking" class="btn-primary text-sm font-semibold px-5 py-2.5 rounded">Book Now</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="home" class="max-w-6xl mx-auto px-5 pt-14 pb-16 grid md:grid-cols-2 gap-10 items-center">
+  <div>
+    <p class="text-[var(--moss)] text-sm font-semibold tracking-wide mb-3">Top-rated tourist taxi service</p>
+    <h1 class="display text-4xl md:text-5xl leading-[1.08] font-semibold mb-5">Rent a cab that's<br>easy, fast &amp; reliable</h1>
+    <p class="text-base text-[#4A5348] mb-8 max-w-md">Your journey, our priority. Choose from our fleet of well-maintained cabs for outstation trips, local rides, round trips and airport transfers — transparent pricing, no hidden charges.</p>
+    <div class="flex flex-wrap gap-3">
+      <a href="#booking" class="btn-clay font-semibold px-6 py-3 rounded">Get instant fare</a>
+      <a href="https://wa.me/919112080025" target="_blank" class="border border-[var(--moss)] text-[var(--moss)] font-semibold px-6 py-3 rounded hover:bg-[var(--moss)] hover:text-white transition">Chat on WhatsApp</a>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-12 pt-8 border-t border-[var(--sand)]">
+      <div><div class="display text-2xl font-semibold">10+ yrs</div><div class="text-xs text-[#6B7268] mt-1">In tourism</div></div>
+      <div><div class="display text-2xl font-semibold">5,000+</div><div class="text-xs text-[#6B7268] mt-1">Happy travellers</div></div>
+      <div><div class="display text-2xl font-semibold">50+</div><div class="text-xs text-[#6B7268] mt-1">Cabs in fleet</div></div>
+      <div><div class="display text-2xl font-semibold">24×7</div><div class="text-xs text-[#6B7268] mt-1">Support</div></div>
+    </div>
+  </div>
+  <div class="relative">
+    <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=900&q=80" alt="Hill road journey" class="rounded-sm w-full h-[420px] object-cover">
+    <div class="absolute -bottom-5 -left-5 bg-white shadow-lg rounded p-4 max-w-[210px] border-l-4 border-[var(--clay)]">
+      <p class="text-xs text-[#6B7268]">Today's promo</p>
+      <p class="display text-lg font-semibold">Up to 30% off outstation packages</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider max-w-6xl mx-auto"></div>
+
+<!-- Fleet & Rates -->
+<section id="fleet" class="max-w-6xl mx-auto px-5 py-16">
+  <p class="text-[var(--moss)] text-sm font-semibold mb-2">Our fleet &amp; starting rates</p>
+  <h2 class="display text-3xl font-semibold mb-2">Choose your ride</h2>
+  <p class="text-[#6B7268] mb-10 max-w-lg">Minimum 300 km/day package on outstation trips. Rates are transparent — what you see is what you pay.</p>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="fleet-grid">
+    <!-- cards injected -->
+  </div>
+</section>
+
+<div class="divider max-w-6xl mx-auto"></div>
+
+<!-- Destinations -->
+<section id="destinations" class="max-w-6xl mx-auto px-5 py-16">
+  <p class="text-[var(--moss)] text-sm font-semibold mb-2">Popular travel routes</p>
+  <h2 class="display text-3xl font-semibold mb-2">Explore incredible destinations</h2>
+  <p class="text-[#6B7268] mb-10 max-w-lg">Tap a destination to start your booking with the route pre-filled.</p>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <a href="#booking" class="card-route group block" data-dest="Hill Stations">
+      <div class="relative h-56">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <span class="absolute top-3 left-3 bg-white/90 text-[10px] font-semibold px-2 py-1 rounded">Popular</span>
+        <div class="absolute bottom-4 left-4 text-white">
+          <h3 class="display text-xl font-semibold">Hill Stations</h3>
+          <p class="text-xs opacity-90">Scenic mountain escapes &amp; viewpoints</p>
+        </div>
+      </div>
+    </a>
+    <a href="#booking" class="card-route group block" data-dest="Temples">
+      <div class="relative h-56">
+        <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <span class="absolute top-3 left-3 bg-white/90 text-[10px] font-semibold px-2 py-1 rounded">Heritage</span>
+        <div class="absolute bottom-4 left-4 text-white">
+          <h3 class="display text-xl font-semibold">Temples</h3>
+          <p class="text-xs opacity-90">Sacred places of worship &amp; darshan</p>
+        </div>
+      </div>
+    </a>
+    <a href="#booking" class="card-route group block" data-dest="Beaches">
+      <div class="relative h-56">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <span class="absolute top-3 left-3 bg-white/90 text-[10px] font-semibold px-2 py-1 rounded">Coastal</span>
+        <div class="absolute bottom-4 left-4 text-white">
+          <h3 class="display text-xl font-semibold">Beaches</h3>
+          <p class="text-xs opacity-90">Sunny coastlines &amp; Konkan shores</p>
+        </div>
+      </div>
+    </a>
+    <a href="#booking" class="card-route group block" data-dest="Forts">
+      <div class="relative h-56">
+        <img src="https://images.unsplash.com/photo-1599839575945-a9e5af0c3fa5?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <span class="absolute top-3 left-3 bg-white/90 text-[10px] font-semibold px-2 py-1 rounded">Culture</span>
+        <div class="absolute bottom-4 left-4 text-white">
+          <h3 class="display text-xl font-semibold">Forts</h3>
+          <p class="text-xs opacity-90">Historic architecture &amp; treks</p>
+        </div>
+      </div>
+    </a>
+    <a href="#booking" class="card-route group block" data-dest="Waterfalls">
+      <div class="relative h-56">
+        <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <span class="absolute top-3 left-3 bg-white/90 text-[10px] font-semibold px-2 py-1 rounded">Nature</span>
+        <div class="absolute bottom-4 left-4 text-white">
+          <h3 class="display text-xl font-semibold">Waterfalls</h3>
+          <p class="text-xs opacity-90">Cascades &amp; green nature drives</p>
+        </div>
+      </div>
+    </a>
+    <a href="#booking" class="card-route group block" data-dest="Pilgrimage">
+      <div class="relative h-56">
+        <img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <span class="absolute top-3 left-3 bg-white/90 text-[10px] font-semibold px-2 py-1 rounded">Spiritual</span>
+        <div class="absolute bottom-4 left-4 text-white">
+          <h3 class="display text-xl font-semibold">Pilgrimage</h3>
+          <p class="text-xs opacity-90">Family yatra &amp; religious circuits</p>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<div class="divider max-w-6xl mx-auto"></div>
+
+<!-- How it works -->
+<section id="how-it-works" class="max-w-6xl mx-auto px-5 py-16">
+  <p class="text-[var(--moss)] text-sm font-semibold mb-2">Easy steps</p>
+  <h2 class="display text-3xl font-semibold mb-10">How to book your ride</h2>
+  <div class="grid sm:grid-cols-5 gap-6 text-sm">
+    <div><div class="display text-2xl font-semibold text-[var(--clay)] mb-2">1</div>Select cab</div>
+    <div><div class="display text-2xl font-semibold text-[var(--clay)] mb-2">2</div>Date &amp; route</div>
+    <div><div class="display text-2xl font-semibold text-[var(--clay)] mb-2">3</div>Enter details</div>
+    <div><div class="display text-2xl font-semibold text-[var(--clay)] mb-2">4</div>Confirm &amp; pay</div>
+    <div><div class="display text-2xl font-semibold text-[var(--clay)] mb-2">5</div>Ready to ride</div>
+  </div>
+</section>
+
+<div class="divider max-w-6xl mx-auto"></div>
+
+<!-- Reviews -->
+<section class="max-w-6xl mx-auto px-5 py-16">
+  <p class="text-[var(--moss)] text-sm font-semibold mb-2">Reviews &amp; feedback</p>
+  <h2 class="display text-3xl font-semibold mb-10">What our customers say</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <blockquote class="bg-white p-6 rounded border border-[var(--sand)]">
+      <p class="text-sm text-[#4A5348] mb-4">Very satisfying service — clean, fresh Innova Crysta and a polite, experienced driver. Will definitely book again.</p>
+      <footer class="text-sm font-semibold">Rudi Hartono <span class="block text-xs font-normal text-[#6B7268]">Tour group traveller</span></footer>
+    </blockquote>
+    <blockquote class="bg-white p-6 rounded border border-[var(--sand)]">
+      <p class="text-sm text-[#4A5348] mb-4">Affordable prices, transparent fare calculation, no hidden charges. Driver arrived 10 minutes early.</p>
+      <footer class="text-sm font-semibold">Dewi Lestari <span class="block text-xs font-normal text-[#6B7268]">Family outstation trip</span></footer>
+    </blockquote>
+    <blockquote class="bg-white p-6 rounded border border-[var(--sand)]">
+      <p class="text-sm text-[#4A5348] mb-4">Well-maintained Ertiga, smooth drive on mountain roads. Instant booking confirmation on WhatsApp.</p>
+      <footer class="text-sm font-semibold">Andi Pratama <span class="block text-xs font-normal text-[#6B7268]">Airport pickup &amp; drop</span></footer>
+    </blockquote>
+  </div>
+</section>
+
+<!-- WhatsApp CTA band -->
+<section class="bg-[var(--moss-dark)] text-white">
+  <div class="max-w-6xl mx-auto px-5 py-14 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div>
+      <h2 class="display text-2xl md:text-3xl font-semibold mb-1">Need a cab right now?</h2>
+      <p class="text-sm text-[var(--sand)]">Message us directly for the fastest response — booking confirmed in minutes.</p>
+    </div>
+    <div class="flex gap-3">
+      <a href="https://wa.me/919112080025" target="_blank" class="bg-[var(--wa)] font-semibold px-6 py-3 rounded flex items-center gap-2">Chat on WhatsApp</a>
+      <a href="tel:+919112080025" class="border border-white/40 font-semibold px-6 py-3 rounded">Call: 91120 80025</a>
+    </div>
+  </div>
+</section>
+
+<!-- Booking form section -->
+<section id="booking" class="max-w-6xl mx-auto px-5 py-16">
+  <p class="text-[var(--moss)] text-sm font-semibold mb-2">Complete your booking</p>
+  <h2 class="display text-3xl font-semibold mb-8">Get an instant fare estimate</h2>
+  <div class="grid md:grid-cols-5 gap-8">
+    <form id="booking-form" class="md:col-span-3 bg-white p-6 rounded border border-[var(--sand)] space-y-4">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div><label class="text-xs font-semibold block mb-1">Full name *</label><input required id="f-name" placeholder="Your name"></div>
+        <div><label class="text-xs font-semibold block mb-1">Mobile (WhatsApp) *</label><input required id="f-phone" placeholder="10-digit number"></div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div><label class="text-xs font-semibold block mb-1">Pickup location</label><input id="f-pickup" placeholder="e.g. Pune Station"></div>
+        <div><label class="text-xs font-semibold block mb-1">Drop location</label><input id="f-drop" placeholder="e.g. Mahabaleshwar"></div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="text-xs font-semibold block mb-1">Trip type</label>
+          <select id="f-trip"><option>Outstation</option><option>Local</option><option>Round Trip</option><option>Airport Transfer</option></select>
+        </div>
+        <div>
+          <label class="text-xs font-semibold block mb-1">Cab category</label>
+          <select id="f-cab">
+            <option value="24">Innova Crysta (₹24/km)</option>
+            <option value="17">Maruti Ertiga (₹17/km)</option>
+            <option value="14" selected>Hyundai Aura (₹14/km)</option>
+            <option value="14">Swift Dzire (₹14/km)</option>
+            <option value="14">Toyota Glanza (₹14/km)</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div><label class="text-xs font-semibold block mb-1">Estimated days</label><input id="f-days" type="number" min="1" value="1"></div>
+        <div><label class="text-xs font-semibold block mb-1">Estimated distance (km)</label><input id="f-km" type="number" min="300" value="300"></div>
+      </div>
+      <div><label class="text-xs font-semibold block mb-1">Special requirements / landmark</label><textarea id="f-notes" rows="2" placeholder="Optional"></textarea></div>
+      <button type="submit" class="btn-clay font-semibold px-6 py-3 rounded w-full sm:w-auto">Get fare &amp; book via WhatsApp</button>
+    </form>
+    <div class="md:col-span-2 bg-[var(--moss-dark)] text-white p-6 rounded">
+      <h3 class="display text-lg font-semibold mb-4">Fare breakdown</h3>
+      <div class="space-y-2 text-sm text-[var(--sand)]">
+        <div class="flex justify-between"><span>Rate per km</span><span id="out-rate">₹14</span></div>
+        <div class="flex justify-between"><span>Billable distance</span><span id="out-km">300 km</span></div>
+        <div class="flex justify-between"><span>Base fare</span><span id="out-base">₹4,200</span></div>
+        <div class="flex justify-between"><span>Driver allowance/day</span><span id="out-allow">₹500</span></div>
+        <div class="flex justify-between"><span>Tolls &amp; parking</span><span>As actual</span></div>
+      </div>
+      <div class="divider my-4 opacity-30"></div>
+      <div class="flex justify-between items-baseline">
+        <span class="text-sm">Estimated total</span>
+        <span class="display text-2xl font-semibold" id="out-total">₹4,700</span>
+      </div>
+      <p class="text-xs text-[var(--sand)]/70 mt-3">Minimum package: 300 km/day on outstation trips.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact" class="bg-[var(--ink)] text-[var(--sand)]">
+  <div class="max-w-6xl mx-auto px-5 py-14 grid sm:grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+    <div>
+      <p class="display text-lg font-semibold text-white mb-2">SearchCab AI</p>
+      <p class="text-[var(--sand)]/70">Your premier tourist cab booking partner for reliable, safe and comfortable journeys.</p>
+    </div>
+    <div>
+      <p class="font-semibold text-white mb-3">Quick menu</p>
+      <ul class="space-y-2 text-[var(--sand)]/80">
+        <li><a href="#fleet">Fleet &amp; Rates</a></li>
+        <li><a href="#destinations">Destinations</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-semibold text-white mb-3">Services</p>
+      <ul class="space-y-2 text-[var(--sand)]/80">
+        <li>Outstation taxi</li>
+        <li>Local hourly rentals</li>
+        <li>Round trip cabs</li>
+        <li>Airport transfers</li>
+        <li>Pilgrimage packages</li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-semibold text-white mb-3">Contact us</p>
+      <ul class="space-y-2 text-[var(--sand)]/80">
+        <li><a href="tel:+919112080025">+91 91120 80025</a></li>
+        <li><a href="https://wa.me/919112080025">WhatsApp</a></li>
+        <li>info@searchcab.ai</li>
+        <li>@cabwala37</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10 text-center text-xs text-[var(--sand)]/60 py-5">
+    © 2026 SearchCab AI Tourist Taxi Service. All rights reserved. Safe journey · Happy journey · Memorable journey
+  </div>
+</footer>
+
+<!-- WhatsApp floating button -->
+<a href="https://wa.me/919112080025" target="_blank" class="wa-float bg-[var(--wa)] w-14 h-14 rounded-full flex items-center justify-center">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C22 6.45 17.5 2 12.04 2zm5.8 14.03c-.24.68-1.4 1.32-1.94 1.4-.5.08-1.11.11-1.79-.11-.41-.13-.94-.3-1.62-.6-2.85-1.23-4.7-4.1-4.85-4.29-.14-.19-1.16-1.55-1.16-2.96s.73-2.1.99-2.38c.26-.28.56-.36.75-.36h.53c.17 0 .4-.02.62.48.24.55.81 1.9.88 2.04.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.71 1.18 1.53 1.91 1.05.94 1.94 1.24 2.22 1.38.28.14.44.12.6-.07.16-.19.68-.8.86-1.07.18-.28.36-.23.6-.14.24.09 1.55.73 1.82.86.26.14.44.2.5.31.06.12.06.68-.18 1.36z"/></svg>
+</a>
+
+<script>
+  const fleet = [
+    {name:"Innova Crysta", cat:"SUV & MUV", rate:24, seats:"6+1", img:"https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=500&q=80"},
+    {name:"Maruti Ertiga", cat:"MUV", rate:17, seats:"6+1", img:"https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=500&q=80"},
+    {name:"Hyundai Aura", cat:"Sedan", rate:14, seats:"4+1", img:"https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=500&q=80"},
+    {name:"Swift Dzire", cat:"Sedan", rate:14, seats:"4+1", img:"https://images.unsplash.com/photo-1494905998402-395d579af36f?auto=format&fit=crop&w=500&q=80"},
+    {name:"Toyota Glanza", cat:"Hatchback", rate:14, seats:"4+1", img:"https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=500&q=80"},
+    {name:"Tempo Traveller", cat:"Tempo Traveller", rate:32, seats:"12+1", img:"https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=500&q=80"},
+  ];
+  const grid = document.getElementById('fleet-grid');
+  fleet.forEach(c=>{
+    grid.innerHTML += `
+      <div class="bg-white rounded border border-[var(--sand)] overflow-hidden group">
+        <div class="h-40 overflow-hidden"><img src="${c.img}" class="w-full h-full object-cover"></div>
+        <div class="p-5">
+          <p class="text-[10px] uppercase tracking-wide text-[var(--moss)] font-semibold mb-1">${c.cat}</p>
+          <h3 class="display text-lg font-semibold mb-1">${c.name}</h3>
+          <p class="text-xs text-[#6B7268] mb-3">${c.seats} seater · AC</p>
+          <div class="flex items-center justify-between">
+            <span class="display text-lg font-semibold">₹${c.rate}<span class="text-xs font-normal text-[#6B7268]">/km</span></span>
+            <a href="#booking" class="text-sm font-semibold text-[var(--moss)]">Select →</a>
+          </div>
+        </div>
+      </div>`;
+  });
+
+  document.querySelectorAll('[data-dest]').forEach(el=>{
+    el.addEventListener('click', e=>{
+      document.getElementById('f-drop').value = el.dataset.dest;
+    });
+  });
+
+  function computeFare(){
+    const rate = Number(document.getElementById('f-cab').value);
+    const km = Math.max(300, Number(document.getElementById('f-km').value || 300));
+    const days = Math.max(1, Number(document.getElementById('f-days').value || 1));
+    const base = rate * km;
+    const allowance = 500 * days;
+    const total = base + allowance;
+    document.getElementById('out-rate').textContent = `₹${rate}`;
+    document.getElementById('out-km').textContent = `${km} km`;
+    document.getElementById('out-base').textContent = `₹${base.toLocaleString('en-IN')}`;
+    document.getElementById('out-allow').textContent = `₹${allowance.toLocaleString('en-IN')}`;
+    document.getElementById('out-total').textContent = `₹${total.toLocaleString('en-IN')}`;
+    return {rate, km, days, base, allowance, total};
+  }
+  ['f-cab','f-km','f-days'].forEach(id=>document.getElementById(id).addEventListener('input', computeFare));
+  computeFare();
+
+  document.getElementById('booking-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    const {total} = computeFare();
+    const name = document.getElementById('f-name').value;
+    const phone = document.getElementById('f-phone').value;
+    const pickup = document.getElementById('f-pickup').value;
+    const drop = document.getElementById('f-drop').value;
+    const trip = document.getElementById('f-trip').value;
+    const cabName = document.getElementById('f-cab').selectedOptions[0].text;
+    const notes = document.getElementById('f-notes').value;
+    const msg = `Hi SearchCab AI, I'd like to book a cab.%0A%0AName: ${name}%0APhone: ${phone}%0ATrip type: ${trip}%0ACab: ${cabName}%0APickup: ${pickup}%0ADrop: ${drop}%0AEstimated total: ₹${total.toLocaleString('en-IN')}%0ANotes: ${notes}`;
+    window.open(`https://wa.me/919112080025?text=${msg}`, '_blank');
+  });
+</script>
+</body>
+</html>
