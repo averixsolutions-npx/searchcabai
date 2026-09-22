@@ -74,19 +74,13 @@
       <a href="#booking" class="btn-clay font-semibold px-6 py-3 rounded">Get instant fare</a>
       <a href="https://wa.me/919112080025" target="_blank" class="border border-[var(--moss)] text-[var(--moss)] font-semibold px-6 py-3 rounded hover:bg-[var(--moss)] hover:text-white transition">Chat on WhatsApp</a>
     </div>
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-12 pt-8 border-t border-[var(--sand)]">
-      <div><div class="display text-2xl font-semibold">10+ yrs</div><div class="text-xs text-[#6B7268] mt-1">In tourism</div></div>
-      <div><div class="display text-2xl font-semibold">5,000+</div><div class="text-xs text-[#6B7268] mt-1">Happy travellers</div></div>
-      <div><div class="display text-2xl font-semibold">50+</div><div class="text-xs text-[#6B7268] mt-1">Cabs in fleet</div></div>
+    <div class="grid grid-cols-2 gap-6 mt-12 pt-8 border-t border-[var(--sand)] max-w-xs">
+      <div><div class="display text-2xl font-semibold">Tourist Permit</div><div class="text-xs text-[#6B7268] mt-1">Verified</div></div>
       <div><div class="display text-2xl font-semibold">24×7</div><div class="text-xs text-[#6B7268] mt-1">Support</div></div>
     </div>
   </div>
   <div class="relative">
     <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=900&q=80" alt="Hill road journey" class="rounded-sm w-full h-[420px] object-cover">
-    <div class="absolute -bottom-5 -left-5 bg-white shadow-lg rounded p-4 max-w-[210px] border-l-4 border-[var(--clay)]">
-      <p class="text-xs text-[#6B7268]">Today's promo</p>
-      <p class="display text-lg font-semibold">Up to 30% off outstation packages</p>
-    </div>
   </div>
 </section>
 
@@ -96,7 +90,8 @@
 <section id="fleet" class="max-w-6xl mx-auto px-5 py-16">
   <p class="text-[var(--moss)] text-sm font-semibold mb-2">Our fleet &amp; starting rates</p>
   <h2 class="display text-3xl font-semibold mb-2">Choose your ride</h2>
-  <p class="text-[#6B7268] mb-10 max-w-lg">Minimum 300 km/day package on outstation trips. Rates are transparent — what you see is what you pay.</p>
+  <p class="text-[#6B7268] max-w-lg"><strong>Minimum 300 km/day</strong> package on outstation trips. Rates are transparent — what you see is what you pay.</p>
+  <p class="text-[#6B7268] mb-10 max-w-lg">All vehicles are Tourist (Yellow Plate) permitted for outstation travel.</p>
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="fleet-grid">
     <!-- cards injected -->
   </div>
@@ -200,19 +195,11 @@
 <section class="max-w-6xl mx-auto px-5 py-16">
   <p class="text-[var(--moss)] text-sm font-semibold mb-2">Reviews &amp; feedback</p>
   <h2 class="display text-3xl font-semibold mb-10">What our customers say</h2>
-  <div class="grid md:grid-cols-3 gap-6">
-    <blockquote class="bg-white p-6 rounded border border-[var(--sand)]">
-      <p class="text-sm text-[#4A5348] mb-4">Very satisfying service — clean, fresh Innova Crysta and a polite, experienced driver. Will definitely book again.</p>
-      <footer class="text-sm font-semibold">Rudi Hartono <span class="block text-xs font-normal text-[#6B7268]">Tour group traveller</span></footer>
-    </blockquote>
-    <blockquote class="bg-white p-6 rounded border border-[var(--sand)]">
-      <p class="text-sm text-[#4A5348] mb-4">Affordable prices, transparent fare calculation, no hidden charges. Driver arrived 10 minutes early.</p>
-      <footer class="text-sm font-semibold">Dewi Lestari <span class="block text-xs font-normal text-[#6B7268]">Family outstation trip</span></footer>
-    </blockquote>
-    <blockquote class="bg-white p-6 rounded border border-[var(--sand)]">
-      <p class="text-sm text-[#4A5348] mb-4">Well-maintained Ertiga, smooth drive on mountain roads. Instant booking confirmation on WhatsApp.</p>
-      <footer class="text-sm font-semibold">Andi Pratama <span class="block text-xs font-normal text-[#6B7268]">Airport pickup &amp; drop</span></footer>
-    </blockquote>
+  <div class="grid md:grid-cols-3 gap-6" id="reviews-grid">
+    <!-- real reviews go here -->
+    <div class="bg-white p-6 rounded border border-[var(--sand)] md:col-span-3 text-center">
+      <p class="text-sm text-[#4A5348]">Reviews coming soon — book your ride and share your experience!</p>
+    </div>
   </div>
 </section>
 
@@ -245,19 +232,28 @@
         <div><label class="text-xs font-semibold block mb-1">Drop location</label><input id="f-drop" placeholder="e.g. Mahabaleshwar"></div>
       </div>
       <div class="grid sm:grid-cols-2 gap-4">
+        <div><label class="text-xs font-semibold block mb-1">Travel date</label><input id="f-date" type="date"></div>
+        <div><label class="text-xs font-semibold block mb-1">Pickup time</label><input id="f-time" type="time"></div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div><label class="text-xs font-semibold block mb-1">Return date (if round trip)</label><input id="f-return-date" type="date"></div>
+        <div><label class="text-xs font-semibold block mb-1">Return time (if round trip)</label><input id="f-return-time" type="time"></div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
         <div>
           <label class="text-xs font-semibold block mb-1">Trip type</label>
           <select id="f-trip"><option>Outstation</option><option>Local</option><option>Round Trip</option><option>Airport Transfer</option></select>
         </div>
+        <div><label class="text-xs font-semibold block mb-1">Number of passengers</label><input id="f-passengers" type="number" min="1" value="1"></div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
         <div>
           <label class="text-xs font-semibold block mb-1">Cab category</label>
           <select id="f-cab"></select>
         </div>
-      </div>
-      <div class="grid sm:grid-cols-2 gap-4">
         <div><label class="text-xs font-semibold block mb-1">Estimated days</label><input id="f-days" type="number" min="1" value="1"></div>
-        <div><label class="text-xs font-semibold block mb-1">Estimated distance (km)</label><input id="f-km" type="number" min="300" value="300"></div>
       </div>
+      <div><label class="text-xs font-semibold block mb-1">Estimated distance (km)</label><input id="f-km" type="number" min="300" value="300"></div>
       <div><label class="text-xs font-semibold block mb-1">Special requirements / landmark</label><textarea id="f-notes" rows="2" placeholder="Optional"></textarea></div>
       <button type="submit" class="btn-clay font-semibold px-6 py-3 rounded w-full sm:w-auto">Get fare &amp; book via WhatsApp</button>
     </form>
@@ -265,7 +261,7 @@
       <h3 class="display text-lg font-semibold mb-4">Fare breakdown</h3>
       <div class="space-y-2 text-sm text-[var(--sand)]">
         <div class="flex justify-between"><span>Rate per km</span><span id="out-rate">₹14</span></div>
-        <div class="flex justify-between"><span>Billable distance</span><span id="out-km">300 km</span></div>
+        <div class="flex justify-between"><span>Billable distance <strong>(min 300 km/day applies)</strong></span><span id="out-km">300 km</span></div>
         <div class="flex justify-between"><span>Base fare</span><span id="out-base">₹4,200</span></div>
         <div class="flex justify-between"><span>Driver allowance/day</span><span id="out-allow">₹500</span></div>
         <div class="flex justify-between"><span>Tolls &amp; parking</span><span>As actual</span></div>
@@ -275,7 +271,7 @@
         <span class="text-sm">Estimated total</span>
         <span class="display text-2xl font-semibold" id="out-total">₹4,700</span>
       </div>
-      <p class="text-xs text-[var(--sand)]/70 mt-3">Minimum package: 300 km/day on outstation trips.</p>
+      <p class="text-xs text-[var(--sand)]/70 mt-3"><strong>Minimum 300 km/day</strong> package on outstation trips.</p>
     </div>
   </div>
 </section>
@@ -298,11 +294,13 @@
     <div>
       <p class="font-semibold text-white mb-3">Services</p>
       <ul class="space-y-2 text-[var(--sand)]/80">
-        <li>Outstation taxi</li>
-        <li>Local hourly rentals</li>
-        <li>Round trip cabs</li>
-        <li>Airport transfers</li>
-        <li>Pilgrimage packages</li>
+        <li>Outstation</li>
+        <li>Round Trip</li>
+        <li>Local Rental</li>
+        <li>Airport Transfer</li>
+        <li>Pilgrimage</li>
+        <li>Hill Station Trips</li>
+        <li>Konkan &amp; Goa Tours</li>
       </ul>
     </div>
     <div>
@@ -311,7 +309,7 @@
         <li><a href="tel:+919112080025">+91 9112080025</a></li>
         <li><a href="https://wa.me/919112080025">WhatsApp</a></li>
         <li>searchcabai@gmail.com</li>
-        <li>@cabwala37</li>
+        <li>@searchcabai</li>
       </ul>
     </div>
   </div>
@@ -394,10 +392,15 @@
     const phone = document.getElementById('f-phone').value;
     const pickup = document.getElementById('f-pickup').value;
     const drop = document.getElementById('f-drop').value;
+    const date = document.getElementById('f-date').value;
+    const time = document.getElementById('f-time').value;
+    const returnDate = document.getElementById('f-return-date').value;
+    const returnTime = document.getElementById('f-return-time').value;
+    const passengers = document.getElementById('f-passengers').value;
     const trip = document.getElementById('f-trip').value;
     const cabName = document.getElementById('f-cab').selectedOptions[0].text;
     const notes = document.getElementById('f-notes').value;
-    const msg = `Hi SearchCab AI, I'd like to book a cab.%0A%0AName: ${name}%0APhone: ${phone}%0ATrip type: ${trip}%0ACab: ${cabName}%0APickup: ${pickup}%0ADrop: ${drop}%0AEstimated total: ₹${total.toLocaleString('en-IN')}%0ANotes: ${notes}`;
+    const msg = `Hi SearchCab AI, I'd like to book a cab.%0A%0AName: ${name}%0APhone: ${phone}%0APickup: ${pickup}%0ADrop: ${drop}%0ADate: ${date}%0ATime: ${time}%0AReturn date: ${returnDate}%0AReturn time: ${returnTime}%0APassengers: ${passengers}%0ATrip type: ${trip}%0ACab: ${cabName}%0AEstimated total: ₹${total.toLocaleString('en-IN')}%0ANotes: ${notes}`;
     window.open(`https://wa.me/919112080025?text=${msg}`, '_blank');
   });
 </script>
