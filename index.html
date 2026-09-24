@@ -407,7 +407,7 @@
     const km = Math.max(300, Number(document.getElementById('f-km').value || 300));
     const days = Math.max(1, Number(document.getElementById('f-days').value || 1));
     const base = rate * km;
-    const allowance = 500 * days;
+    const allowance = 300 * days;
     const total = base + allowance;
     document.getElementById('out-rate').textContent = `₹${rate}`;
     document.getElementById('out-km').textContent = `${km} km`;
