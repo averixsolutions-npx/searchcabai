@@ -403,19 +403,26 @@
   });
 
   function computeFare(){
-    const rate = Number(document.getElementById('f-cab').value);
-    const km = Math.max(300, Number(document.getElementById('f-km').value || 300));
-    const days = Math.max(1, Number(document.getElementById('f-days').value || 1));
-    const base = rate * km;
-    const allowance = 300 * days;
-    const total = base + allowance;
-    document.getElementById('out-rate').textContent = `₹${rate}`;
-    document.getElementById('out-km').textContent = `${km} km`;
-    document.getElementById('out-base').textContent = `₹${base.toLocaleString('en-IN')}`;
-    document.getElementById('out-allow').textContent = `₹${allowance.toLocaleString('en-IN')}`;
-    document.getElementById('out-total').textContent = `₹${total.toLocaleString('en-IN')}`;
-    return {rate, km, days, base, allowance, total};
-  }
+  const rate = Number(document.getElementById('f-cab').value);
+  const actualKm = Number(document.getElementById('f-km').value || 300);
+  const days = Math.max(1, Number(document.getElementById('f-days').value || 1));
+
+  const minimumKm = 300 * days;
+  const billableKm = Math.max(actualKm, minimumKm);
+
+  const base = rate * billableKm;
+  const allowance = 300 * days;
+  const total = base + allowance;
+
+  document.getElementById('out-rate').textContent = `₹${rate}`;
+  document.getElementById('out-km').textContent = `${billableKm} km`;
+  document.getElementById('out-base').textContent = `₹${base.toLocaleString('en-IN')}`;
+  document.getElementById('out-allow').textContent = `₹${allowance.toLocaleString('en-IN')}`;
+  document.getElementById('out-total').textContent = `₹${total.toLocaleString('en-IN')}`;
+
+  return {rate, actualKm, minimumKm, billableKm, days, base, allowance, total};
+}
+
   ['f-cab','f-km','f-days'].forEach(id=>document.getElementById(id).addEventListener('input', computeFare));
   computeFare();
 
